@@ -38,6 +38,9 @@ importers:
 
   packages/core:
     dependencies:
+      gsap:
+        specifier: ^3.14.2
+        version: 3.14.2
       three:
         specifier: ^0.183.2
         version: 0.183.2
@@ -289,6 +292,9 @@ packages:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+
+  gsap@3.14.2:
+    resolution: {integrity: sha512-P8/mMxVLU7o4+55+1TCnQrPmgjPKnwkzkXOK1asnR9Jg2lna4tEY5qBJjMmAaOBDDZWtlRjBXjLa0w53G/uBLA==}
 
   lightningcss-android-arm64@1.31.1:
     resolution: {integrity: sha512-HXJF3x8w9nQ4jbXRiNppBCqeZPIAfUo8zE/kOEGbW5NZvGc/K7nMxbhIr+YlFlHW5mpbg/YFPdbnCh1wAXCKFg==}
@@ -698,6 +704,8 @@ snapshots:
 
   fsevents@2.3.3:
     optional: true
+
+  gsap@3.14.2: {}
 
   lightningcss-android-arm64@1.31.1:
     optional: true

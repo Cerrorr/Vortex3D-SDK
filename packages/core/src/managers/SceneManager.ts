@@ -1,47 +1,37 @@
-import { Scene, Color, BoxGeometry, MeshBasicMaterial, Mesh } from 'three';
-import { EventBus } from '../utils/EventBus';
+import { Scene, Color } from 'three'
+import { EventBus } from '../utils/EventBus'
 
+/**
+ * 场景管理类
+ * 仅负责场景图容器的初始化、背景配置及全局更新逻辑
+ */
 export class SceneManager {
-  public instance: Scene;
-  private testCube: Mesh | null = null;
-  private eventBus: EventBus;
+  public instance: Scene
+  private eventBus: EventBus
 
   constructor(eventBus: EventBus) {
-    this.eventBus = eventBus;
-    this.instance = new Scene();
-    this.instance.background = new Color(0x1a1a1a);
-    this.addTestCube();
+    this.eventBus = eventBus
+    this.instance = new Scene()
+    this.instance.background = new Color(0x1a1a1a)
 
-    // 监听渲染前事件
-    this.eventBus.on('beforeRender', this.update);
+    // 注册渲染更新事件
+    this.eventBus.on('beforeRender', this.update)
   }
 
-  private addTestCube() {
-    const geometry = new BoxGeometry(1, 1, 1);
-    const material = new MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-    this.testCube = new Mesh(geometry, material);
-    this.instance.add(this.testCube);
-  }
-
-  // 改为箭头函数，确保 eventBus 调用时 this 指向 SceneManager 本身
+  /**
+   * 场景每帧更新逻辑
+   */
   private update = () => {
-    if (this.testCube) {
-      this.testCube.rotation.x += 0.01;
-      this.testCube.rotation.y += 0.01;
-    }
+    // 此处可添加全局场景动画，如背景色渐变等
   }
 
+  /**
+   * 释放场景资源
+   */
   public dispose() {
-    console.log('[SceneManager] Disposing scene resources...');
-    
-    // 务必解绑事件
-    this.eventBus.off('beforeRender', this.update);
-    
-    if (this.testCube) {
-      this.testCube.geometry.dispose();
-      (this.testCube.material as MeshBasicMaterial).dispose();
-      this.instance.remove(this.testCube);
-      this.testCube = null;
-    }
+    console.log('[SceneManager] Disposing scene.')
+    this.eventBus.off('beforeRender', this.update)
+    // 清空场景中所有的物体
+    this.instance.clear()
   }
 }
