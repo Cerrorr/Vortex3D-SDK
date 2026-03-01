@@ -1,0 +1,22 @@
+{
+  "name": "@vortex3d/core",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "The core 3D engine based on Three.js",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.23.0",
+  "dependencies": {
+    "three": "^0.183.2"
+  },
+  "devDependencies": {
+    "@types/three": "^0.183.1",
+    "typescript": "~5.9.3"
+  }
+}

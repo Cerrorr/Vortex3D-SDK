@@ -1,0 +1,3 @@
+packages:
+  - 'packages/*'  # 存放底层 SDK
+  - 'apps/*'      # 存放业务平台
